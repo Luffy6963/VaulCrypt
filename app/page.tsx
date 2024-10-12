@@ -1,5 +1,7 @@
+// page.tsx
 'use client'
 
+import { Inter } from '@next/font/google'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -7,6 +9,12 @@ import { ArrowRight, CheckCircle, Lock, RefreshCcw, Shield, Smartphone, Twitter,
 import { useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import Image from 'next/image'
+
+// Import and configure the Inter font
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+})
 
 export default function Component() {
   const [showContactInfo, setShowContactInfo] = useState(false)
@@ -86,7 +94,7 @@ export default function Component() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-blue-50 to-white font-sans">
+    <div className={`${inter.variable} flex flex-col min-h-screen bg-gradient-to-b from-blue-50 to-white font-sans`}>
       {/* Header */}
       <motion.header 
         className="px-6 lg:px-10 h-20 flex items-center bg-white shadow-sm sticky top-0 z-50"
@@ -220,12 +228,12 @@ export default function Component() {
               <motion.h1 
                 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-blue-900"
               >
-                The Future of Secure Escrow Payments
+                The Future of Secure Transactions
               </motion.h1>
               <motion.p 
                 className="mx-auto max-w-[700px] text-blue-800 text-lg md:text-xl"
               >
-                Launching in 2025, Vaulcrypt is developing a revolutionary platform for secure transactions. Our innovative account-based system aims to protect your funds with cutting-edge security and seamless integration with various payment systems.
+                Vaulcrypt is developing a revolutionary platform for secure transactions. Our innovative system aims to protect your funds with cutting-edge security and seamless integration with various payment systems.
               </motion.p>
               <motion.div className="flex flex-col sm:flex-row gap-4">
                 <Button onClick={() => scrollToSection(waitlistRef)} className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-3 rounded-full shadow-md transition-shadow">
@@ -331,7 +339,7 @@ export default function Component() {
                 { step: 2, title: "Initiate Secure Transaction", content: "Buyers will initiate a transaction, choosing from various payment methods including UPI, credit cards, and net banking.", icon: KeyRound },
                 { step: 3, title: "Escrow Hold and Verification", content: "Funds will be securely held in escrow, with real-time updates provided to both parties.", icon: Shield },
                 { step: 4, title: "Goods/Services Delivery", content: "Sellers will proceed to deliver the goods or services as agreed, knowing the funds are secured.", icon: Smartphone },
-                { step: 5, title: "Confirmation and Release", content: "Upon buyer&#39;s confirmation of satisfaction, funds will be released to the seller through their preferred payment method.", icon: CheckCircle },
+                { step: 5, title: "Confirmation and Release", content: "Upon buyer's confirmation of satisfaction, funds will be released to the seller through their preferred payment method.", icon: CheckCircle },
               ].map((step, index) => (
                 <motion.div 
                   key={index} 
@@ -380,7 +388,7 @@ export default function Component() {
               className="mx-auto max-w-[700px] text-blue-700 text-lg md:text-xl text-center mb-12"
               variants={itemVariants}
             >
-              Vaulcrypt is an innovative startup founded in 2024, aiming to revolutionize secure escrow payment solutions. Our team consists of passionate fintech experts and cybersecurity professionals dedicated to creating a safer digital transaction environment for businesses and consumers.
+              Vaulcrypt is an innovative startup founded in 2024, aiming to revolutionize secure payment solutions. Our team consists of experts and professionals dedicated to creating a safer digital transaction environment for businesses and consumers.
             </motion.p>
             <motion.div  
               className="grid gap-8 sm:grid-cols-2"
@@ -448,7 +456,7 @@ export default function Component() {
                   Be Part of the Secure Transaction Revolution
                 </h2>
                 <p className="mx-auto max-w-[700px] text-blue-700 text-lg md:text-xl">
-                  Vaulcrypt is preparing to transform B2C transactions. Join our waitlist to be among the first to experience our innovative escrow system in 2025.
+                  Vaulcrypt is preparing to transform B2C transactions. Join our waitlist to be among the first to experience our innovative system.
                 </p>
               </div>
               <form onSubmit={handleWaitlistSubmit} className="flex flex-col gap-4 w-full max-w-md">
@@ -498,7 +506,7 @@ export default function Component() {
                 Contact Us
               </h2>
               <p className="mx-auto max-w-[700px] text-blue-700 text-lg md:text-xl">
-                Have questions or want to learn more about Vaulcrypt? We&#39;d love to hear from you.
+                Have questions or want to learn more about Vaulcrypt? We would love to hear from you.
               </p>
               <Button onClick={handleContactUs} className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-3 rounded-full flex items-center shadow-md transition-shadow">
                 Get in Touch
