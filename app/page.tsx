@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { ArrowRight, CheckCircle, Lock, RefreshCcw, Shield, Smartphone, Twitter, Instagram, Linkedin, CreditCard, KeyRound, IndianRupee, Menu, X, UserPlus, Send, DollarSign, Package, ThumbsUp } from "lucide-react"
+import { ArrowRight, CheckCircle, Lock, RefreshCcw, Shield, Twitter, Instagram, Linkedin, CreditCard, KeyRound, IndianRupee, Menu, X, UserPlus, Send, DollarSign, Package, ThumbsUp } from "lucide-react"
 import { useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import Image from 'next/image'
