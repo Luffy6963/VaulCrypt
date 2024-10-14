@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { ArrowRight, CheckCircle, Lock, RefreshCcw, Shield, Twitter, Instagram, Linkedin, CreditCard, KeyRound, IndianRupee, Menu, X, UserPlus, Send, DollarSign, Package, ThumbsUp } from "lucide-react"
+import { ArrowRight, CheckCircle, Lock, RefreshCcw, Shield, Smartphone, Twitter, Instagram, Linkedin, CreditCard, KeyRound, IndianRupee, Menu, X, UserPlus, Send, DollarSign, Package, ThumbsUp, Vault, Cpu } from "lucide-react"
 import { useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import Image from 'next/image'
@@ -204,34 +204,44 @@ export default function Component() {
       <main className="flex-1">
         {/* Hero Section */}
         <motion.section
-          className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-r from-blue-100 to-blue-200 relative"
+          className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-r from-blue-100 via-blue-200 to-blue-100 relative overflow-hidden"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false }}
         >
-          {/* Overlay for better text readability */}
-          <div className="absolute inset-0 bg-blue-50 opacity-70"></div>
-          <div className="relative z-10 container px-4 md:px-6">
+          {/* Animated background shapes */}
+          <motion.div 
+            className="absolute inset-0 z-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <div className="absolute top-0 left-0 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+            <div className="absolute top-0 right-0 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+            <div className="absolute -bottom-8 left-20 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+          </motion.div>
+          
+          <div className="relative z-10 container px-4 md:px-6 mx-auto">
             <motion.div 
-              className="flex flex-col items-center space-y-6 text-center"
+              className="flex flex-col items-center space-y-8 text-center"
               variants={itemVariants}
             >
               <motion.h1 
-                className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-blue-900"
+                className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-blue-900 drop-shadow-md"
               >
                 The Future of Secure Transactions
               </motion.h1>
               <motion.p 
-                className="mx-auto max-w-[700px] text-blue-800 text-lg md:text-xl"
+                className="mx-auto max-w-[700px] text-blue-800 text-lg md:text-xl font-medium"
               >
                 Vaulcrypt is developing a revolutionary platform for secure transactions. Our innovative system aims to protect your funds with cutting-edge security and seamless integration with various payment systems.
               </motion.p>
               <motion.div className="flex flex-col sm:flex-row gap-4">
-                <Button onClick={() => scrollToSection(waitlistRef)} className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-3 rounded-full shadow-md transition-shadow">
+                <Button onClick={() => scrollToSection(waitlistRef)} className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-3 rounded-full shadow-md transition-all hover:shadow-lg transform hover:-translate-y-1">
                   Join Waitlist
                 </Button>
-                <Button onClick={() => scrollToSection(featuresRef)} variant="outline" className="text-blue-600 border-blue-600 hover:bg-blue-50 text-lg px-8 py-3 rounded-full">
+                <Button onClick={() => scrollToSection(featuresRef)} variant="outline" className="text-blue-600 border-blue-600 hover:bg-blue-100 text-lg px-8 py-3 rounded-full transition-all hover:shadow-md">
                   Learn More
                 </Button>
               </motion.div>
@@ -243,13 +253,13 @@ export default function Component() {
         <motion.section
           id="features"
           ref={featuresRef}
-          className="w-full py-12 md:py-24 lg:py-32 bg-white"
+          className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-blue-50 via-white to-blue-50"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false }}
         >
-          <div className="container px-4 md:px-6">
+          <div className="container px-4 md:px-6 mx-auto">
             <motion.h2 
               className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-center mb-12 text-blue-900"
               variants={itemVariants}
@@ -257,7 +267,7 @@ export default function Component() {
               Planned Features
             </motion.h2>
             <motion.div 
-              className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+              className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
               variants={{
                 visible: {
                   transition: {
@@ -274,17 +284,19 @@ export default function Component() {
                 { icon: CreditCard, title: "Multiple Payment Options", content: "Support for credit cards, debit cards, net banking, and other popular payment methods." },
                 { icon: RefreshCcw, title: "Real-time Updates", content: "Instant notifications and status updates on your transactions." },
                 { icon: Shield, title: "AI-Driven Fraud Detection", content: "Real-time identification of suspicious activities to prevent fraud and enhance security." },
-                { icon: RefreshCcw, title: "Blockchain Technology", content: "Layer 2 solutions and smart contracts for faster, cheaper, and more transparent transactions." },
+                { icon: Cpu, title: "Blockchain Technology", content: "Layer 2 solutions and smart contracts for faster, cheaper, and more transparent transactions." },
                 { icon: Lock, title: "Regulatory Compliance", content: "Adherence to relevant financial regulations and compliance standards." },
               ].map((feature, index) => (
                 <motion.div 
                   key={index}
                   variants={itemVariants}
                 >
-                  <Card className="bg-blue-50 border-blue-200 hover:shadow-lg transition-shadow duration-300">
+                  <Card className="bg-white border-blue-200 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                     <CardHeader className="flex flex-col items-center">
-                      <feature.icon className="h-12 w-12 mb-4 text-blue-600" />
-                      <CardTitle className="text-blue-800 text-xl font-semibold">{feature.title}</CardTitle>
+                      <div className="p-3 rounded-full bg-blue-100 mb-4">
+                        <feature.icon className="h-8 w-8 text-blue-600" />
+                      </div>
+                      <CardTitle className="text-blue-800 text-xl font-semibold text-center">{feature.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-blue-700 text-base text-center">{feature.content}</p>
@@ -329,8 +341,8 @@ export default function Component() {
             >
               {[
                 { step: 1, title: "Secure Account Creation", content: "Users will create an account with multi-factor authentication and passkey options for enhanced security.", icon: UserPlus },
-                { step: 2, title: "Initiate Secure Transaction", content: "Buyers will initiate a transaction, choosing from various payment methods including UPI, credit cards, and net banking.", icon: Send },
-                { step: 3, title: "Escrow Hold and Verification", content: "Funds will be securely held in escrow, with real-time updates provided to both parties.", icon: DollarSign },
+                { step: 2, title: "Initiate Secure Transaction", content: "Buyers will initiate a transaction, choosing from various payment methods including UPI, credit cards, and net banking.", icon: DollarSign },
+                { step: 3, title: "Escrow Hold and Verification", content: "Funds will be securely held in escrow, with real-time updates provided to both parties.", icon: Vault },
                 { step: 4, title: "Goods/Services Delivery", content: "Sellers will proceed to deliver the goods or services as agreed, knowing the funds are secured.", icon: Package },
                 { step: 5, title: "Confirmation and Release", content: "Upon buyer's confirmation of satisfaction, funds will be released to the seller through their preferred payment method.", icon: ThumbsUp },
               ].map((step, index) => (
@@ -573,3 +585,32 @@ export default function Component() {
     </div>
   )
 }
+
+<style jsx global>{`
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+`}</style>
