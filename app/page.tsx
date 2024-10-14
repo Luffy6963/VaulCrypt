@@ -1,20 +1,12 @@
-// page.tsx
 'use client'
 
-import { Inter } from '@next/font/google'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { ArrowRight, CheckCircle, Lock, RefreshCcw, Shield, Smartphone, Twitter, Instagram, Linkedin, CreditCard, KeyRound, IndianRupee, Menu, X } from "lucide-react"
+import { ArrowRight, CheckCircle, Lock, RefreshCcw, Shield, Smartphone, Twitter, Instagram, Linkedin, CreditCard, KeyRound, IndianRupee, Menu, X, UserPlus, Send, DollarSign, Package, ThumbsUp } from "lucide-react"
 import { useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import Image from 'next/image'
-
-// Import and configure the Inter font
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-sans',
-})
 
 export default function Component() {
   const [showContactInfo, setShowContactInfo] = useState(false)
@@ -38,7 +30,7 @@ export default function Component() {
 
   const scrollToSection = (ref: React.RefObject<HTMLElement>) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' })
-    setIsNavOpen(false) // Close nav on mobile after scrolling
+    setIsNavOpen(false)
   }
 
   const handleContactUs = () => {
@@ -94,7 +86,7 @@ export default function Component() {
   }
 
   return (
-    <div className={`${inter.variable} flex flex-col min-h-screen bg-gradient-to-b from-blue-50 to-white font-sans`}>
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-blue-50 to-white font-sans">
       {/* Header */}
       <motion.header 
         className="px-6 lg:px-10 h-20 flex items-center bg-white shadow-sm sticky top-0 z-50"
@@ -222,7 +214,7 @@ export default function Component() {
           <div className="absolute inset-0 bg-blue-50 opacity-70"></div>
           <div className="relative z-10 container px-4 md:px-6">
             <motion.div 
-              className="flex flex-col items-center space-y-4 text-center"
+              className="flex flex-col items-center space-y-6 text-center"
               variants={itemVariants}
             >
               <motion.h1 
@@ -281,8 +273,8 @@ export default function Component() {
                 { icon: IndianRupee, title: "UPI Integration", content: "Seamless transactions using the Unified Payments Interface (UPI) system." },
                 { icon: CreditCard, title: "Multiple Payment Options", content: "Support for credit cards, debit cards, net banking, and other popular payment methods." },
                 { icon: RefreshCcw, title: "Real-time Updates", content: "Instant notifications and status updates on your transactions." },
-                { icon: Smartphone, title: "Mobile Accessibility", content: "Manage your transactions on-the-go with our planned mobile-responsive platform." },
-                { icon: Shield, title: "Dispute Resolution", content: "Fair and efficient dispute resolution process to protect both buyers and sellers." },
+                { icon: Shield, title: "AI-Driven Fraud Detection", content: "Real-time identification of suspicious activities to prevent fraud and enhance security." },
+                { icon: RefreshCcw, title: "Blockchain Technology", content: "Layer 2 solutions and smart contracts for faster, cheaper, and more transparent transactions." },
                 { icon: Lock, title: "Regulatory Compliance", content: "Adherence to relevant financial regulations and compliance standards." },
               ].map((feature, index) => (
                 <motion.div 
@@ -321,11 +313,12 @@ export default function Component() {
             <motion.h2 
               className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-center mb-12 text-blue-900"
               variants={itemVariants}
+            
             >
               How It Will Work
             </motion.h2>
             <motion.div 
-              className="grid gap-8 lg:grid-cols-3"
+              className="grid gap-8 lg:grid-cols-5"
               variants={{
                 visible: {
                   transition: {
@@ -335,11 +328,11 @@ export default function Component() {
               }}
             >
               {[
-                { step: 1, title: "Secure Account Creation", content: "Users will create an account with multi-factor authentication and passkey options for enhanced security.", icon: Lock },
-                { step: 2, title: "Initiate Secure Transaction", content: "Buyers will initiate a transaction, choosing from various payment methods including UPI, credit cards, and net banking.", icon: KeyRound },
-                { step: 3, title: "Escrow Hold and Verification", content: "Funds will be securely held in escrow, with real-time updates provided to both parties.", icon: Shield },
-                { step: 4, title: "Goods/Services Delivery", content: "Sellers will proceed to deliver the goods or services as agreed, knowing the funds are secured.", icon: Smartphone },
-                { step: 5, title: "Confirmation and Release", content: "Upon buyer's confirmation of satisfaction, funds will be released to the seller through their preferred payment method.", icon: CheckCircle },
+                { step: 1, title: "Secure Account Creation", content: "Users will create an account with multi-factor authentication and passkey options for enhanced security.", icon: UserPlus },
+                { step: 2, title: "Initiate Secure Transaction", content: "Buyers will initiate a transaction, choosing from various payment methods including UPI, credit cards, and net banking.", icon: Send },
+                { step: 3, title: "Escrow Hold and Verification", content: "Funds will be securely held in escrow, with real-time updates provided to both parties.", icon: DollarSign },
+                { step: 4, title: "Goods/Services Delivery", content: "Sellers will proceed to deliver the goods or services as agreed, knowing the funds are secured.", icon: Package },
+                { step: 5, title: "Confirmation and Release", content: "Upon buyer's confirmation of satisfaction, funds will be released to the seller through their preferred payment method.", icon: ThumbsUp },
               ].map((step, index) => (
                 <motion.div 
                   key={index} 
@@ -347,7 +340,7 @@ export default function Component() {
                   variants={itemVariants}
                 >
                   <div className="flex items-center justify-center h-16 w-16 rounded-full bg-blue-600 text-white text-2xl font-bold mb-4">
-                    {step.step}
+                    <step.icon className="h-8 w-8" />
                   </div>
                   <h3 className="text-2xl font-semibold text-blue-800 mb-2">{step.title}</h3>
                   <p className="text-blue-700 text-base">{step.content}</p>
@@ -472,7 +465,6 @@ export default function Component() {
                   Join Waitlist
                 </Button>
               </form>
-              {/* Removed the second "Join Waitlist" button to streamline the user experience */}
               {submitStatus && (
                 <motion.p 
                   className={`mt-4 text-lg ${submitStatus.success ? 'text-green-600' : 'text-red-600'}`}
@@ -523,14 +515,14 @@ export default function Component() {
                   <p className="mb-4 text-lg">
                     <strong>Email:</strong>{" "}
                     <a 
-                      href="mailto:vaulcrypt@gmail.com" 
+                      href="mailto:info@vaulcrypt.com" 
                       className="text-blue-600 hover:text-blue-800 underline"
                       onClick={(e) => {
                         e.preventDefault()
-                        window.location.href = "mailto:vaulcrypt@gmail.com"
+                        window.location.href = "mailto:info@vaulcrypt.com"
                       }}
                     >
-                      vaulcrypt@gmail.com
+                      info@vaulcrypt.com
                     </a>
                   </p>
                   <div className="flex justify-center space-x-4">
