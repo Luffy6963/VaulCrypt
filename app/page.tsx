@@ -3,9 +3,9 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { ArrowRight, CheckCircle, Lock, RefreshCcw, Shield, Twitter, Instagram, Linkedin, CreditCard, KeyRound, IndianRupee, Menu, X, UserPlus, DollarSign, Package, ThumbsUp, Vault, Cpu } from "lucide-react"
-import { useRef, useState } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { ArrowRight, CheckCircle, Lock, RefreshCcw, Shield, Twitter, Instagram, Linkedin, CreditCard, KeyRound, IndianRupee, Menu, X, UserPlus,Cpu, FileSignature, Building, Rocket, Vault, Circle, RefreshCcwDot, DollarSignIcon, BadgeDollarSignIcon } from "lucide-react"
+import { useRef, useState, useEffect } from "react"
+import { motion, useAnimation, useScroll } from "framer-motion"
 import Image from 'next/image'
 
 export default function Component() {
@@ -20,13 +20,10 @@ export default function Component() {
   const waitlistRef = useRef<HTMLElement>(null)
   const contactRef = useRef<HTMLElement>(null)
 
-  const { scrollYProgress } = useScroll({
+  useScroll({
     target: howItWorksRef,
     offset: ["start end", "end start"]
   })
-
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 1])
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 1])
 
   const scrollToSection = (ref: React.RefObject<HTMLElement>) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' })
@@ -84,6 +81,48 @@ export default function Component() {
       }
     },
   }
+
+  // How It Works section
+  const howItWorksControls = useAnimation()
+  const [, setActiveStep] = useState(0)
+
+  const steps = [
+    { number: 1, title: "Initiate Purchase", icon: UserPlus, description: "Choose Vaulcrypt as your payment option at checkout to secure your transaction in virtual vaults." },
+    { number: 2, title: "Funds Secured in Vaults", icon: Vault, description: "Your payment is safely held by Vaulcrypt until you receive and confirm your order." },
+    { number: 3, title: "Receive & Review Order", icon: FileSignature, description: "Once your order arrives, check the quality and satisfaction before finalizing payment." },
+    { number: 4, title: "Release Funds to Seller", icon: BadgeDollarSignIcon, description: "When you're happy with the purchase, funds are instantly released to the seller, completing the transaction securely." },
+  ]
+
+  useEffect(() => {
+    const animateStep = async (step: number) => {
+      await howItWorksControls.start(i => ({
+        scale: i === step ? 1.1 : 1,
+        opacity: i === step ? 1 : 0.5,
+        transition: { duration: 0.5 }
+      }))
+    }
+
+    const animateTimeline = async () => {
+      for (let i = 0; i < steps.length; i++) {
+        setActiveStep(i)
+        await animateStep(i)
+        await new Promise(resolve => setTimeout(resolve, 2000)) // Wait for 2 seconds on each step
+      }
+    }
+
+    const startAnimation = () => {
+      animateTimeline().then(() => {
+        // After completing one cycle, start over
+        setTimeout(startAnimation, 1000)
+      })
+    }
+
+    startAnimation()
+
+    return () => {
+      howItWorksControls.stop()
+    }
+  }, [howItWorksControls, steps.length])
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-blue-50 to-white font-sans">
@@ -259,7 +298,7 @@ export default function Component() {
           whileInView="visible"
           viewport={{ once: false }}
         >
-          <div className="container px-4 md:px-6 mx-auto">
+          <div className="container px-4 md:px-6  mx-auto">
             <motion.h2 
               className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-center mb-12 text-blue-900"
               variants={itemVariants}
@@ -270,6 +309,7 @@ export default function Component() {
               className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
               variants={{
                 visible: {
+                  
                   transition: {
                     staggerChildren: 0.1
                   }
@@ -277,7 +317,7 @@ export default function Component() {
               }}
             >
               {[
-                { icon: Lock, title: "Advanced Security", content: "State-of-the-art encryption and security measures to protect your funds and data." },
+                { icon: Lock, title: "Advanced Security", content: "State-of-the-art encryption and security measures to protect your funds  and data." },
                 { icon: KeyRound, title: "Multi-Factor Authentication", content: "Enhanced account security with biometric and device-based authentication options." },
                 { icon: CheckCircle, title: "Passkey Login", content: "Passwordless login option for a more secure and convenient user experience." },
                 { icon: IndianRupee, title: "UPI Integration", content: "Seamless transactions using the Unified Payments Interface (UPI) system." },
@@ -309,68 +349,42 @@ export default function Component() {
         </motion.section>
 
         {/* How It Works Section */}
-        <motion.section 
-          id="how-it-works" 
-          ref={howItWorksRef} 
-          className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-blue-100 to-blue-200 relative"
-          style={{ opacity, scale }}
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false }}
-        >
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-blue-50 opacity-80"></div>
-          <div className="relative z-10 container px-4 md:px-6">
-            <motion.h2 
-              className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-center mb-12 text-blue-900"
-              variants={itemVariants}
-            
-            >
-              How It Will Work
-            </motion.h2>
-            <motion.div 
-              className="grid gap-8 lg:grid-cols-5"
-              variants={{
-                visible: {
-                  transition: {
-                    staggerChildren: 0.2
-                  }
-                }
-              }}
-            >
-              {[
-                { step: 1, title: "Secure Account Creation", content: "Users will create an account with multi-factor authentication and passkey options for enhanced security.", icon: UserPlus },
-                { step: 2, title: "Initiate Secure Transaction", content: "Buyers will initiate a transaction, choosing from various payment methods including UPI, credit cards, and net banking.", icon: DollarSign },
-                { step: 3, title: "Escrow Hold and Verification", content: "Funds will be securely held in escrow, with real-time updates provided to both parties.", icon: Vault },
-                { step: 4, title: "Goods/Services Delivery", content: "Sellers will proceed to deliver the goods or services as agreed, knowing the funds are secured.", icon: Package },
-                { step: 5, title: "Confirmation and Release", content: "Upon buyer's confirmation of satisfaction, funds will be released to the seller through their preferred payment method.", icon: ThumbsUp },
-              ].map((step, index) => (
-                <motion.div 
-                  key={index} 
-                  className="flex flex-col items-center text-center p-4 bg-white rounded-lg shadow-md"
-                  variants={itemVariants}
-                >
-                  <div className="flex items-center justify-center h-16 w-16 rounded-full bg-blue-600 text-white text-2xl font-bold mb-4">
-                    <step.icon className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-2xl font-semibold text-blue-800 mb-2">{step.title}</h3>
-                  <p className="text-blue-700 text-base">{step.content}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-            {/* Planned Security Measures */}
-            <motion.div 
-              className="mt-16 text-center max-w-2xl mx-auto"
-              variants={itemVariants}
-            >
-              <h3 className="text-2xl font-bold mb-4 text-blue-800">Planned Security Measures</h3>
-              <p className="text-blue-700 text-lg">
-                Throughout this process, Vaulcrypt plans to employ multiple layers of security, including advanced encryption, multi-factor authentication, and continuous transaction monitoring, all compliant with regulatory standards.
-              </p>
-            </motion.div>
+        <section ref={howItWorksRef} className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-blue-900 to-blue-800 text-white overflow-hidden">
+          <div className="container px-4 md:px-6 mx-auto">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-center mb-16">
+              How it Works
+            </h2>
+            <div className="relative">
+              {/* Timeline line */}
+              <div className="absolute left-0 right-0 h-0.5 top-10 bg-blue-600">
+                <div className="absolute left-0 w-4 h-4 -ml-2 -mt-[7px] bg-blue-600 rounded-full"></div>
+                <div className="absolute right-0 w-4 h-4 -mr-2 -mt-[7px] bg-blue-600 rounded-full"></div>
+              </div>
+              {/* Steps */}
+              <div className="relative flex justify-between items-start">
+                {steps.map((step, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex flex-col items-center"
+                    custom={index}
+                    animate={howItWorksControls}
+                  >
+                    <motion.div
+                      className="w-20 h-20 rounded-full bg-blue-600 flex items-center justify-center text-2xl font-bold mb-4 relative z-10 shadow-lg"
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      <step.icon size={32} />
+                    </motion.div>
+                    <div className="text-center max-w-[250px] mt-4">
+                      <p className="font-semibold text-lg mb-2">{step.title}</p>
+                      <p className="text-sm text-blue-200">{step.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* About Section */}
         <motion.section
@@ -527,11 +541,11 @@ export default function Component() {
                   <p className="mb-4 text-lg">
                     <strong>Email:</strong>{" "}
                     <a 
-                      href="mailto:info@vaulcrypt.com" 
+                      href="mailto:vaulcrypt@gmail.com" 
                       className="text-blue-600 hover:text-blue-800 underline"
                       onClick={(e) => {
                         e.preventDefault()
-                        window.location.href = "mailto:info@vaulcrypt.com"
+                        window.location.href = "mailto:vaulcrypt@gmail.com"
                       }}
                     >
                       info@vaulcrypt.com
