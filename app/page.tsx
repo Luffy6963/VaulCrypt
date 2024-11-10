@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { ArrowRight, CheckCircle, Lock, RefreshCcw, Shield, Twitter, Instagram, Linkedin, CreditCard, KeyRound, IndianRupee, Menu, X, UserPlus,Cpu, FileSignature, Building, Rocket, Vault, Circle, RefreshCcwDot, DollarSignIcon, BadgeDollarSignIcon } from "lucide-react"
+import { ArrowRight, CheckCircle, Lock, RefreshCcw, Shield, Twitter, Instagram, Linkedin, CreditCard, KeyRound, IndianRupee, Menu, X, UserPlus,Cpu, FileSignature, Rocket, Vault,BadgeDollarSignIcon } from "lucide-react"
 import { useRef, useState, useEffect } from "react"
 import { motion, useAnimation, useScroll } from "framer-motion"
 import Image from 'next/image'
