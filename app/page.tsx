@@ -89,7 +89,7 @@ export default function Component() {
   const steps = [
     { number: 1, title: "Initiate Purchase", icon: UserPlus, description: "Choose Vaulcrypt as your payment option at checkout to secure your transaction in virtual vaults." },
     { number: 2, title: "Funds Secured in Vaults", icon: Vault, description: "Your payment is safely held by Vaulcrypt until you receive and confirm your order." },
-    { number: 3, title: "Receive & Review Order", icon: FileSignature, description: "Once your order arrives, check the quality and satisfaction before finalizing payment." },
+    { number: 3, title: "Receive & Review Order", icon: FileSignature, description: "Product inspection and verification during the delivery and then finalizing payment" },
     { number: 4, title: "Release Funds to Seller", icon: BadgeDollarSignIcon, description: "When you're happy with the purchase, funds are instantly released to the seller, completing the transaction securely." },
   ]
 
@@ -303,7 +303,7 @@ export default function Component() {
               className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-center mb-12 text-blue-900"
               variants={itemVariants}
             >
-              Planned Features
+              Our Features
             </motion.h2>
             <motion.div 
               className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
@@ -317,15 +317,15 @@ export default function Component() {
               }}
             >
               {[
-                { icon: Lock, title: "Advanced Security", content: "State-of-the-art encryption and security measures to protect your funds  and data." },
-                { icon: KeyRound, title: "Multi-Factor Authentication", content: "Enhanced account security with biometric and device-based authentication options." },
-                { icon: CheckCircle, title: "Passkey Login", content: "Passwordless login option for a more secure and convenient user experience." },
-                { icon: IndianRupee, title: "UPI Integration", content: "Seamless transactions using the Unified Payments Interface (UPI) system." },
-                { icon: CreditCard, title: "Multiple Payment Options", content: "Support for credit cards, debit cards, net banking, and other popular payment methods." },
-                { icon: RefreshCcw, title: "Real-time Updates", content: "Instant notifications and status updates on your transactions." },
+                { icon: Lock, title: "Robust security", content: "Advanced technology safeguarding your funds with Virtual Vault possessions " },
+                { icon: Cpu, title: "Blockchain Technology", content: "Layer 2 solutions and smart contracts for credibility and encrypted transactions data." },
                 { icon: Shield, title: "AI-Driven Fraud Detection", content: "Real-time identification of suspicious activities to prevent fraud and enhance security." },
-                { icon: Cpu, title: "Blockchain Technology", content: "Layer 2 solutions and smart contracts for faster, cheaper, and more transparent transactions." },
-                { icon: Lock, title: "Regulatory Compliance", content: "Adherence to relevant financial regulations and compliance standards." },
+                { icon: KeyRound, title: "Multi-Factor Authentication", content: "Enhanced account security with biometric and seamless login option, also device-based authentication options." },
+                { icon: IndianRupee, title: "Dispute Management", content: "Reliable dispute resolution through automated processes, enhancing trust and minimizing transaction delays." },
+                { icon: CreditCard, title: "Multiple Payment Options", content: "Enabling UPI, credit cards, debit cards, net banking,and other popular payment methods." },
+                { icon: RefreshCcw, title: "Real-time Updates", content: "Instant notifications and status updates on your transactions." },
+                { icon: Lock, title: "Regulatory Compliance", content: "Adherence to relevant government financial regulations and compliance standards." },
+                { icon: CheckCircle, title: "Delivery verification", content: "Freedom to inspect and verify product during the delivery." },
               ].map((feature, index) => (
                 <motion.div 
                   key={index}
