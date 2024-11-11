@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { ArrowRight, CheckCircle, Lock, RefreshCcw, Shield, Twitter, Instagram, Linkedin, CreditCard, KeyRound, IndianRupee, Menu, X, UserPlus,Cpu, FileSignature, Vault,BadgeDollarSignIcon } from "lucide-react"
+import { ArrowRight, CheckCircle, Lock, RefreshCcw, Shield, Twitter, Instagram, Linkedin, CreditCard, KeyRound, Menu, X, UserPlus,Cpu, FileSignature, Vault,BadgeDollarSignIcon, HandshakeIcon } from "lucide-react"
 import { useRef, useState, useEffect } from "react"
 import { motion, useAnimation, useScroll } from "framer-motion"
 import Image from 'next/image'
@@ -321,7 +321,7 @@ export default function Component() {
                 { icon: Cpu, title: "Blockchain Technology", content: "Layer 2 solutions and smart contracts for credibility and encrypted transactions data." },
                 { icon: Shield, title: "AI-Driven Fraud Detection", content: "Real-time identification of suspicious activities to prevent fraud and enhance security." },
                 { icon: KeyRound, title: "Multi-Factor Authentication", content: "Enhanced account security with biometric and seamless login option, also device-based authentication options." },
-                { icon: IndianRupee, title: "Dispute Management", content: "Reliable dispute resolution through automated processes, enhancing trust and minimizing transaction delays." },
+                { icon: HandshakeIcon, title: "Dispute Management", content: "Reliable dispute resolution through automated processes, enhancing trust and minimizing transaction delays." },
                 { icon: CreditCard, title: "Multiple Payment Options", content: "Enabling UPI, credit cards, debit cards, net banking,and other popular payment methods." },
                 { icon: RefreshCcw, title: "Real-time Updates", content: "Instant notifications and status updates on your transactions." },
                 { icon: Lock, title: "Regulatory Compliance", content: "Adherence to relevant government financial regulations and compliance standards." },
