@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { ArrowRight, CheckCircle, Lock, RefreshCcw, Shield, Twitter, Instagram, Linkedin, CreditCard, KeyRound, Menu, X, UserPlus,Cpu, FileSignature, Vault,BadgeDollarSignIcon, HandshakeIcon } from "lucide-react"
+import { ArrowRight, Lock, RefreshCcw, Shield, Twitter, Instagram, Linkedin, CreditCard, KeyRound, Menu, X, UserPlus,Cpu, FileSignature, Vault,BadgeDollarSignIcon, HandshakeIcon, File, Package } from "lucide-react"
 import { useRef, useState, useEffect } from "react"
 import { motion, useAnimation, useScroll } from "framer-motion"
 import Image from 'next/image'
@@ -324,8 +324,8 @@ export default function Component() {
                 { icon: HandshakeIcon, title: "Dispute Management", content: "Reliable dispute resolution through automated processes, enhancing trust and minimizing transaction delays." },
                 { icon: CreditCard, title: "Multiple Payment Options", content: "Enabling UPI, credit cards, debit cards, net banking,and other popular payment methods." },
                 { icon: RefreshCcw, title: "Real-time Updates", content: "Instant notifications and status updates on your transactions." },
-                { icon: Lock, title: "Regulatory Compliance", content: "Adherence to relevant government financial regulations and compliance standards." },
-                { icon: CheckCircle, title: "Delivery verification", content: "Freedom to inspect and verify product during the delivery." },
+                { icon: File, title: "Regulatory Compliance", content: "Adherence to relevant government financial regulations and compliance standards." },
+                { icon: Package, title: "Delivery verification", content: "Freedom to inspect and verify product during the delivery." },
               ].map((feature, index) => (
                 <motion.div 
                   key={index}
