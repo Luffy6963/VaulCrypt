@@ -318,7 +318,7 @@ export default function Component() {
             >
               {[
                 { icon: Lock, title: "Robust security", content: "Advanced technology safeguarding your funds with Virtual Vault possessions " },
-                { icon: Cpu, title: "Blockchain Technology", content: "Layer 2 solutions and smart contracts for credibility and encrypted transactions data." },
+                { icon: Cpu, title: "Blockchain Technology", content: "Layer 2 solutions and smart contracts for confidential and encrypted transactions data." },
                 { icon: Shield, title: "AI-Driven Fraud Detection", content: "Real-time identification of suspicious activities to prevent fraud and enhance security." },
                 { icon: KeyRound, title: "Multi-Factor Authentication", content: "Enhanced account security with biometric and seamless login option, also device-based authentication options." },
                 { icon: HandshakeIcon, title: "Dispute Management", content: "Reliable dispute resolution through automated processes, enhancing trust and minimizing transaction delays." },
