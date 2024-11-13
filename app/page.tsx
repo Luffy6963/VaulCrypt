@@ -89,7 +89,7 @@ export default function Component() {
   const steps = [
     { number: 1, title: "Initiate Purchase", icon: UserPlus, description: "Choose Vaulcrypt as your payment option at checkout to secure your transaction in virtual vaults." },
     { number: 2, title: "Funds Secured in Vaults", icon: Vault, description: "Your payment is safely held by Vaulcrypt until you receive and confirm your order." },
-    { number: 3, title: "Receive & Review Order", icon: FileSignature, description: "Product inspection and verification during the delivery and then finalizing payment" },
+    { number: 3, title: "Receive & Review Order", icon: FileSignature, description: "Product inspection and verification and then finalizing payment" },
     { number: 4, title: "Release Funds to Seller", icon: BadgeDollarSignIcon, description: "When you're happy with the purchase, funds are instantly released to the seller, completing the transaction securely." },
   ]
 
@@ -325,7 +325,7 @@ export default function Component() {
                 { icon: CreditCard, title: "Multiple Payment Options", content: "Enabling UPI, credit cards, debit cards, net banking,and other popular payment methods." },
                 { icon: RefreshCcw, title: "Real-time Updates", content: "Instant notifications and status updates on your transactions." },
                 { icon: File, title: "Regulatory Compliance", content: "Adherence to relevant government financial regulations and compliance standards." },
-                { icon: Package, title: "Delivery verification", content: "Freedom to inspect and verify product during the delivery." },
+                { icon: Package, title: "Delivery verification", content: "Freedom to inspect and verify product after the delivery." },
               ].map((feature, index) => (
                 <motion.div 
                   key={index}
