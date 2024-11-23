@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { ArrowRight, Lock, RefreshCcw, Shield, Twitter, Instagram, Linkedin, CreditCard, KeyRound, Menu, X, UserPlus,Cpu, FileSignature, Vault,BadgeDollarSignIcon, HandshakeIcon, File, Package } from "lucide-react"
+import { ArrowRight, Lock, RefreshCcw, Shield, Twitter, Instagram, Linkedin, CreditCard, KeyRound, Menu, X, UserPlus,FileSignature, Vault,BadgeDollarSignIcon, HandshakeIcon, File, Package } from "lucide-react"
 import { useRef, useState, useEffect } from "react"
 import { motion, useAnimation, useScroll } from "framer-motion"
 import Image from 'next/image'
@@ -89,7 +89,7 @@ export default function Component() {
   const steps = [
     { number: 1, title: "Initiate Purchase", icon: UserPlus, description: "Choose Vaulcrypt as your payment option at checkout to secure your transaction in virtual vaults." },
     { number: 2, title: "Funds Secured in Vaults", icon: Vault, description: "Your payment is safely held by Vaulcrypt until you receive and confirm your order." },
-    { number: 3, title: "Receive & Review Order", icon: FileSignature, description: "Product inspection and verification and then finalizing payment" },
+    { number: 3, title: "Receive & Review Order", icon: FileSignature, description: "Product inspection and verification and then finalizing payment." },
     { number: 4, title: "Release Funds to Seller", icon: BadgeDollarSignIcon, description: "When you're happy with the purchase, funds are instantly released to the seller, completing the transaction securely." },
   ]
 
@@ -318,7 +318,6 @@ export default function Component() {
             >
               {[
                 { icon: Lock, title: "Robust security", content: "Advanced technology safeguarding your funds with Virtual Vault possessions " },
-                { icon: Cpu, title: "Blockchain Technology", content: "Layer 2 solutions and smart contracts for confidential and encrypted transactions data." },
                 { icon: Shield, title: "AI-Driven Fraud Detection", content: "Real-time identification of suspicious activities to prevent fraud and enhance security." },
                 { icon: KeyRound, title: "Multi-Factor Authentication", content: "Enhanced account security with biometric and seamless login option, also device-based authentication options." },
                 { icon: HandshakeIcon, title: "Dispute Management", content: "Reliable dispute resolution through automated processes, enhancing trust and minimizing transaction delays." },
